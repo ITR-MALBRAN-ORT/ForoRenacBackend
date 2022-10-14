@@ -1,7 +1,7 @@
 {
-  "name": "api-seed",
+  "name": "renac-backend",
   "version": "1.0.0",
-  "description": "Node.js API Rest Seed Project",
+  "description": "Node.js API Rest ForoRenacBackend Project",
   "main": "./dist/index.js",
   "scripts": {
     "build": "npx tsc",
@@ -9,10 +9,6 @@
     "start:dev": "concurrently \"npx tsc --watch \" \"nodemon ./dist/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint index.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "http://10.1.6.61/chapters/nodejs/api-seed.git"
   },
   "keywords": [],
   "author": "federico schnabel <federico_schnabel@itrsa.com.ar>",
