@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+  api-seed:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: api-seed
+    container_name: api-seed
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=develop
+    ports: 
+      - "3000:3000"
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
