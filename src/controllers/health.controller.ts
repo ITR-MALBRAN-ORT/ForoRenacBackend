@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+const bcrypt = require("bcrypt");
 
 const getHealth = (_req: Request, res: Response): any => {
   console.log('>>> getHealth');
@@ -10,4 +11,12 @@ const getReadiness = (__req: Request, __res: Response): any => {
   __res.json({ status: 'UP', message: 'not configured yet' });
 };
 
-export { getHealth, getReadiness };//primer commit
+const firstLogin = (___req: Request, ___res: Response): any => {
+  console.log('>>> getReadiness')
+  console.log(___req.body.password)
+  bcrypt.hash(___req.body.password)
+  console.log(___req.body.password)
+  ___res.json({ status: 'UP', message: 'not configured yet' });
+};
+
+export { getHealth, getReadiness, firstLogin };//primer commit
