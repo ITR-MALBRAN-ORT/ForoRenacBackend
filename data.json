@@ -1,12 +1,12 @@
 [
     {
         "user":"Eitan",
-        "password": "$2a$12$dGXVvk5XiB0FJH30Ddzw8O1TfaW1m6//BiDyR.pQ1qBrJM7u.xlli",
+        "password": "$2a$10$ukLEnJktP/VoK25BGxhZy.z.flLH6nXafKqm8./HchYgbx67EvoSa",
         "temporaly":true
     },
     {
         "user":"Fishman",
-        "password":"$2a$12$nl8Zyqd.gDS9xYNMzeQiueVMs4Vnehp15tazEs8nFic5IPvATuY6q",
+        "password":"$2a$10$mFdqdoF10yr/qYjgntE7wexXNWfQTPdYh7k0XQEUjn2ewJLp4SPYi",
         "temporaly":false
     }
 ]

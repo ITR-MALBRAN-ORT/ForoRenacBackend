@@ -1,7 +1,18 @@
 import { Request, Response } from 'express';
-import myJson from "../../data.json"
+import myJson from "../../data.json";
 
-const bcrypt = require("bcrypt")
+import { compare, hash } from 'bcrypt';
+ 
+ 
+ 
+export const unHashPassword = async (password: string, hashedPassword: string) => {
+  console.log(password, hashedPassword)  
+  const isSame = await compare(password, hashedPassword);
+ 
+    return isSame;
+};
+ 
+
 
 const getHealth = (_req: Request, res: Response): any => {
   console.log('>>> getHealth');
@@ -13,16 +24,24 @@ const getReadiness = (__req: Request, __res: Response): any => {
   __res.json({ status: 'UP', message: 'not configured yet' });
 };
 
-const firstLogin = (___req: Request, ___res: Response): any => {
+const  firstLogin = async (___req: Request, ___res: Response) => {
   console.log('>>> getReadiness')
   console.log(___req.body.password)
   const result = myJson.filter(word => word.user===___req.body.user)
-  console.log("hola",result[0])
   if(result[0]===undefined){
-    ___res.status(400).json({ status: 'DOWN', message: 'no user found' });
+    ___res.status(400).json({ status: 'UP', message: 'no user found' });
+  }else{
+    const isSame= await unHashPassword(___req.body.password, result[0].password)
+    if(isSame===true){
+      if(result[0].temporaly===true){
+        ___res.status(200).json({ status: '200', message: 'succed logIn, password is temporaly' })
+      }else{
+        ___res.status(200).json({ status: '200', message: 'succed logIn, password is not temporaly' })
+      }
+    }else{
+      ___res.status(400).json({status: '400', message: 'incorrect password'})
+    }
   }
-    console.log(___req.body.password)
-  ___res.json({ status: '400', message: 'not configured yet' });
 };
 
 export { getHealth, getReadiness, firstLogin };//primer commit
