@@ -3,11 +3,11 @@ import config from 'config';
 import { ValidationError } from 'express-validation';
 import indexRouter from './src/routes/index.routes';
 import registerErrorHandling from './src/middlewares/error.middlewares';
-import { body } from 'express-validator';
 
 var bodyParser = require('body-parser')
+import sequelize from './database/mysql.connection';
 
-const PORT: number = Number(config.get('server.port') ?? 3000);
+const PORT: number = Number(config.get('SERVER.port') ?? 3000);
 
 const app: Express = express();
 
@@ -29,6 +29,24 @@ app.use((err: any, req: any, res: any, next: any) => {
       res,
     );
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    const log = {
+      message: 'Connection has been established successfully.',
+      timestamp: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+    };
+    console.log(log);
+  })
+  .catch((err) => {
+    const log = {
+      message: 'Cannot establish connection with DB',
+      timestamp: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+      error: err,
+    };
+    console.log(log);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
