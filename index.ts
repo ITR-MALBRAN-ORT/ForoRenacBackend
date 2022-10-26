@@ -3,13 +3,17 @@ import config from 'config';
 import { ValidationError } from 'express-validation';
 import indexRouter from './src/routes/index.routes';
 import registerErrorHandling from './src/middlewares/error.middlewares';
+
+var bodyParser = require('body-parser')
 import sequelize from './database/mysql.connection';
 
 const PORT: number = Number(config.get('SERVER.port') ?? 3000);
 
 const app: Express = express();
 
+app.use(bodyParser())
 app.use('/api/v1', indexRouter);
+
 
 app.use((err: any, req: any, res: any, next: any) => {
   if (err instanceof ValidationError)

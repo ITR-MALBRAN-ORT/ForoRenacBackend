@@ -10,4 +10,4 @@ const getReadiness = (__req: Request, __res: Response): any => {
   __res.json({ status: 'UP', message: 'not configured yet' });
 };
 
-export { getHealth, getReadiness };
+export { getHealth, getReadiness};//primer commit
