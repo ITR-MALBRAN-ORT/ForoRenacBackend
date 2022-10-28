@@ -24,4 +24,4 @@ Usuarios.init(
   },
 );
 
-module.exports = Usuarios;
+export default Usuarios;
