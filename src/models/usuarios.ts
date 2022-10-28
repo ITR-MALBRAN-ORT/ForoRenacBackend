@@ -19,7 +19,7 @@ Usuarios.init(
   },
   {
     sequelize,
-    tableName: 'users',
+    tableName: 'usuarios',
     timestamps: false,
   },
 );

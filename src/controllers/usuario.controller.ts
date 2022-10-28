@@ -46,7 +46,7 @@ const  firstLogin = async (___req: Request, ___res: Response) => {
                 const validUser = user[0]
                const validPassword = await compare(___req.body.password, validUser.clave)
                !validPassword&&___res.status(400).json({status: '400', message: 'incorrect password'})
-               ___res.status(200).json({ status: '200', message: 'usuario validado', usuario: {
+               ___res.status(200).json({ status: '200', message: 'usuario validado', data: {
                 nombre:validUser.nombre,
                 mail: validUser.mail
                } })
@@ -56,4 +56,4 @@ const  firstLogin = async (___req: Request, ___res: Response) => {
         }
     };
 
-export {firstLogin};
+export {firstLogin, login};
