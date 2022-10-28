@@ -10,7 +10,7 @@ Usuarios.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    email: DataTypes.STRING,
+    mail: DataTypes.STRING,
     nombre: DataTypes.STRING,
     clave: DataTypes.STRING,
     perfil: DataTypes.STRING,
@@ -18,9 +18,9 @@ Usuarios.init(
   },
   {
     sequelize,
-    tableName: 'users',
+    tableName: 'usuarios',
     timestamps: false,
   },
 );
 
-module.exports = Usuarios;
+export default Usuarios;

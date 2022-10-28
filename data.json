@@ -1,0 +1,12 @@
+[
+    {
+        "user":"Eitan",
+        "password": "$2a$10$qCgZPZSBxXe5VttrEVa85Ol.OJD.qRhpTEWFyeBlWv6SgjoqXHvXy",
+        "temporaly":true
+    },
+    {
+        "user":"Fishman",
+        "password":"$2a$10$mFdqdoF10yr/qYjgntE7wexXNWfQTPdYh7k0XQEUjn2ewJLp4SPYi",
+        "temporaly":false
+    }
+]
