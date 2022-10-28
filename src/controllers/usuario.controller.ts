@@ -15,7 +15,7 @@ const  firstLogin = async (___req: Request, ___res: Response) => {
     console.log(___req.body.password)
     const result = myJson.filter(word => word.user===___req.body.user)
     if(result[0]===undefined){
-        ___res.status(400).json({ status: 'UP', message: 'no user found' });
+        ___res.status(400).json({ status: '400', message: 'no user found' });
     }else{
         const isSame= await unHashPassword(___req.body.password, result[0].password)
         if(isSame===true){
