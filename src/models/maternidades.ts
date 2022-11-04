@@ -1,27 +1,25 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../../database/mysql.connection';
 
-class Usuarios extends Model {}
+class Maternidades extends Model {}
 
-Usuarios.init(
+Maternidades.init(
   {
-    id: {
+    idmaternidades: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    mail: DataTypes.STRING,
-    nombre: DataTypes.STRING,
-    apellido: DataTypes.STRING,
-    clave: DataTypes.STRING,
-    perfil: DataTypes.STRING,
+    descripcion: DataTypes.STRING,
+    ciudad: DataTypes.STRING,
+    provincia: DataTypes.STRING,
     estado: DataTypes.STRING,
   },
   {
     sequelize,
-    tableName: 'usuarios',
+    tableName: 'maternidades',
     timestamps: false,
   },
 );
 
-export default Usuarios;
+export default Maternidades;
