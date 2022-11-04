@@ -17,6 +17,8 @@ Resumen.init(
     sin_anomalias_vivos: DataTypes.INTEGER,
     sin_anomalias_muertos: DataTypes.INTEGER,
     maternidades_idmaternidades: DataTypes.INTEGER,
+    usuarios_maternidades_usuarios_id: DataTypes.INTEGER,
+    usuarios_maternidades_maternidades_id: DataTypes.INTEGER,
   },
   {
     sequelize,
