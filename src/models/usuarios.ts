@@ -19,9 +19,9 @@ Usuarios.init(
   },
   {
     sequelize,
-    tableName: 'users',
+    tableName: 'usuarios',
     timestamps: false,
   },
 );
 
-module.exports = Usuarios;
+export default Usuarios;

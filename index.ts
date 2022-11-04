@@ -5,11 +5,14 @@ import indexRouter from './src/routes/index.routes';
 import registerErrorHandling from './src/middlewares/error.middlewares';
 import sequelize from './database/mysql.connection';
 
+const bodyParser = require('body-parser')
 const PORT: number = Number(config.get('SERVER.port') ?? 3000);
 
 const app: Express = express();
 
+app.use(bodyParser())
 app.use('/api/v1', indexRouter);
+
 
 app.use((err: any, req: any, res: any, next: any) => {
   if (err instanceof ValidationError)
