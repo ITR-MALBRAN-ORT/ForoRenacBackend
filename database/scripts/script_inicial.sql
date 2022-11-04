@@ -156,9 +156,11 @@ CREATE TABLE IF NOT EXISTS `renac_db`.`resumen` (
   `con_anomalias_muertos` INT NULL,
   `sin_anomalias_vivos` INT NULL,
   `sin_anomalias_muertos` INT NULL,
-  `maternidades_idmaternidades` INT NOT NULL,
+  `usuarios_maternidades_usuarios_id` INT NOT NULL,
+  `usuarios_maternidades_maternidades_id` INT NOT NULL,
   PRIMARY KEY (`idresumen`))
 ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
