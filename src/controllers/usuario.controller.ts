@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import myJson from "../../data.json";
 import userModel from '../models/usuarios';
-
+import premadeEmails from '../utils/premadeEmails';
+import sendEmail from '../helpers/sendEmail';
 import { compare, hash, hashSync } from 'bcrypt';
 
 export const unHashPassword = async (password: string, hashedPassword: string) => {
@@ -60,15 +61,47 @@ const changePassword = async (__req: Request, __res: Response) => {
             user.estado == 'A'
       
         await user.save();
+        
         return __res.status(200).json({
             status: 200,
             message: 'Password changed',
         })
-        
+
     } catch (e) {
       __res.status(400).json(e)
       console.log(e)
     }
 };
 
-export {firstLogin, changePassword};
+const sendChangePasswordEmail = async (__req: Request, __res: Response) => {
+    console.log('>>> sendChangePasswordEmail');
+    try {
+        if (!/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(__req.body.mail))
+            return __res.status(400).json({
+                status: 400,
+                message: 'Email is not valid',
+            })
+        
+        const user = await userModel.findOne({
+            where:{
+            mail: __req.body.mail,
+            },
+        });
+  
+        if (!user)
+            return __res.status(400).json({
+                status: 400,
+                message: 'Email does not exist',
+            })
+        
+        sendEmail(__req.body.mail, premadeEmails.changePassword.type)
+        
+        __res.status(200).json("Email enviado exitósamente!")
+
+    } catch (e) {
+      __res.status(400).json(e)
+      console.log(e)
+    }
+};
+
+export {firstLogin, changePassword, sendChangePasswordEmail};
