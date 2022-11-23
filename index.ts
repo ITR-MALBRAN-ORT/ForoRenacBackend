@@ -3,10 +3,9 @@ import config from 'config';
 import { ValidationError } from 'express-validation';
 import indexRouter from './src/routes/index.routes';
 import registerErrorHandling from './src/middlewares/error.middlewares';
-
-var bodyParser = require('body-parser')
 import sequelize from './database/mysql.connection';
 
+const bodyParser = require('body-parser')
 const PORT: number = Number(config.get('SERVER.port') ?? 3000);
 
 const app: Express = express();
