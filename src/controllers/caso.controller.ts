@@ -36,6 +36,12 @@ import { compare, hash } from 'bcrypt';
             hosp_derivado:___req.body.hospitalDerivadoBebe
         }
 
+        const datosMalformacion={
+            detectado_prenatal:___req.body.detectadoPrenatal,
+            malforma_prenatal:___req.body.malformaPrenatal,
+            malformacion:___req.body.malformacion,
+            estudios_complemtarios:___req.body.estudiosComplementarios
+        }
 
 
             ___res.status(200).json({status: '200', message: 'a'})
