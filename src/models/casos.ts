@@ -11,7 +11,9 @@ Casos.init(
       primaryKey: true,
     },
     estado: DataTypes.STRING,
-    maternidades_id: DataTypes.INTEGER,
+    //maternidades_id: DataTypes.INTEGER,
+    usuarios_maternidades_usuarios_id:DataTypes.INTEGER,
+    usuarios_maternidades_maternidades_id:DataTypes.INTEGER,
   },
   {
     sequelize,

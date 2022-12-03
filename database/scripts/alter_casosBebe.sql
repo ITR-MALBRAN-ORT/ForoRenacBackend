@@ -1,0 +1,1 @@
+ALTER TABLE renac_db.casos_bebe MODIFY COLUMN idcasos_bebe int auto_increment NOT NULL;
